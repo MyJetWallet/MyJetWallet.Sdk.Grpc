@@ -20,7 +20,7 @@ namespace MyJetWallet.Sdk.Grpc
             _channel = channel.Intercept(new PrometheusMetricsInterceptor());
         }
 
-        protected TService CreateGrpcService<TService>() where TService : class
+        public TService CreateGrpcService<TService>() where TService : class
         {
             return _channel.CreateGrpcService<TService>();
         }
