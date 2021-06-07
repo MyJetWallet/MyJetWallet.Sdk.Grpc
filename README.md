@@ -2,7 +2,7 @@
 
 ```cshrp
 
-public class MyClientFactory: GrpcClientFactory
+public class MyClientFactory: MyGrpcClientFactory
 {
 	public MyClientFactory(string grpcServiceUrl) : base(grpcServiceUrl)
 	{}
