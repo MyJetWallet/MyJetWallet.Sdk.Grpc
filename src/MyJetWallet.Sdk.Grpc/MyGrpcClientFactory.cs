@@ -9,11 +9,11 @@ using ProtoBuf.Grpc.Client;
 
 namespace MyJetWallet.Sdk.Grpc
 {
-    public class GrpcClientFactory
+    public class MyGrpcClientFactory
     {
         private readonly CallInvoker _channel;
 
-        public GrpcClientFactory(string grpcServiceUrl)
+        public MyGrpcClientFactory(string grpcServiceUrl)
         {
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             var channel = GrpcChannel.ForAddress(grpcServiceUrl);
