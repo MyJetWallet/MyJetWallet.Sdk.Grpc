@@ -16,7 +16,7 @@ namespace MyJetWallet.Sdk.Grpc
             _logger = logger;
         }
 
-        public override Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context,
+        public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request, ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)
         {
             var sourceAppName = "-none-";
@@ -28,7 +28,9 @@ namespace MyJetWallet.Sdk.Grpc
                 sourceAppVersion = context.RequestHeaders?.Get(CallSourceInterceptor.GrpcSourceAppVersionHeader)?.Value;
                 sourceAppHost = context.RequestHeaders?.Get(CallSourceInterceptor.GrpcSourceAppHostHeader)?.Value;
                 
-                return base.UnaryServerHandler(request, context, continuation);
+                var resp = await base.UnaryServerHandler(request, context, continuation);
+
+                return resp;
             }
             catch (Exception ex)
             {
