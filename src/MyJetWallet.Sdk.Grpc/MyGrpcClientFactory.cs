@@ -15,9 +15,7 @@ namespace MyJetWallet.Sdk.Grpc
 
         public MyGrpcClientFactory(string grpcServiceUrl)
         {
-            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            var channel = GrpcChannel.ForAddress(grpcServiceUrl);
-            _channel = channel.Intercept(new PrometheusMetricsInterceptor());
+            _channel = ClientFactoryHelper.CreateCallInvoker(grpcServiceUrl);
         }
 
         public TService CreateGrpcService<TService>() where TService : class
