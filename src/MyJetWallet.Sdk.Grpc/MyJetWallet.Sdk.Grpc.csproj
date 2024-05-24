@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
     <PackageReference Include="MyJetWallet.Sdk.GrpcMetrics" Version="2.4.0" />
   </ItemGroup>
 
